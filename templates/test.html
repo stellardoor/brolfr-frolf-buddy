@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %} Chat with {{user_2name}} {% endblock %}
+
+{% block body %}
+
+<h1> </h1>
+<br>
+<div id="chats">
+    <div class="">
+        <div >
+            <div class="container-for-buddies-chat">
+                <ul class="buddy-button-list" >
+                <li>
+                <button class="buddy-button" type="button"
+                    > <img class="tiny" src="static/images/luigi.jpeg" >
+                </img> Luigi</button>
+            </li>
+            <li>
+                <button type="button" 
+                    class="buddy-button"> <img class="tiny" src="static/images/hammerbro.jpeg"></img> Hammerbro</button>
+                </li>
+                </ul>
+            </div>
+        </div>
+        <div >
+            <h1 class="middle-headline"> Chatting with Hammerbro</h1>
+            <div class="middle-chat-final">
+                <div class="buddy-message">
+                <div class="left-message">
+                    <img class="extra-tiny" src="/static/images/tree-b.png" ></img>
+                    <div class="bubble">
+                        <b>Luigi: </b> you suck </div>
+                    <small class="timestamp">Wed, Mar 29, 2023 05:39 PM </small>
+                </div>
+                <div class="right-message">
+                    <img class="extra-tiny-right" src="/static/images/tree-b.png" ></img>
+                    <div class="bubble">
+                        <b>Hammerbro: </b> no u dum </div>
+                    <small class="timestamp-right">Wed, Mar 29, 2023 05:39 PM</small>
+                </div>
+            </div>
+            <div >
+                <input class="send-message" type="text" id="send-message" name="send-message" />
+                <button class="send-button"  type="submit" >Send Message!</button>
+            </div>
+
+            </div>
+        </div>
+        <div>
+        </div>
+
+</div>
+</div>
+
+{% endblock %}

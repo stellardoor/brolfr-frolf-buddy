@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Messages {% endblock %}
+
+{% block body %}
+    <div id="all-chats" >
+
+    </div>
+
+    <script type="text/jsx" src="/static/jsx/chats-page.jsx"></script>
+    <script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#all-chats')
+        )
+    </script>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %} Brolfrs {% endblock %}
+
+{% block body %}
+
+
+    <div id="brolfrs" >
+
+    </div>
+    
+    <script type="text/jsx" src="/static/jsx/profiles.jsx"></script>
+    <script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#brolfrs')
+        )
+    </script>
+
+
+{% endblock %}

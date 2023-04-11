@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Chat with {{user_2name}} {% endblock %}
+
+{% block body %}
+
+<h1> </h1>
+<input type = "hidden" id="user-id" value="{{user.user_id}}"></input>
+<input type = "hidden" id="user-name" value="{{user.fname}}"></input>
+<br>
+<div id="chats" >
+
+</div>
+
+<script type="text/jsx" src="/static/jsx/chat(final).jsx"></script>
+<script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#chats')
+        )
+    </script>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% block title %} Edit Profile {% endblock %}
+
+{% block body %}
+
+<input class="app" type="button" onclick="window.location.href='/profile';" value="Back to profile" />
+
+<div id="live-alert-location"></div>
+<div class="container">
+        <div class="row justify-content-center p-3">
+            <div class="col-12">
+                <h1> {{user.fname}}'s Profile Specifics</h1>
+
+            <div class="container-edit-profile">
+                <form id="edit-profile-form">
+                    <label for="intro-text">Introduce yourself:</label><br>
+                    <textarea name="intro-text" id="intro-text" maxlength="200"
+                        value={{user.intro_text}}>{{user.intro_text}}</textarea><br>
+
+                    <label for="gender-pref">Looking to throw with:</label>
+                    <select name="gender-pref" id="gender-pref">
+                        <option value="{{user.gender_preference}}" selected disabled hidden>{{user.gender_preference}}</option>
+                        <option value="Women">Women</option>
+                        <option value="Men">Men</option>
+                        <option value="All Genders">All Genders</option>
+                    </select><br><br>
+                    <text> Availability:</text>
+                    <div id="calendar">
+                        <input type="checkbox" name="calendar" class="calendar" id="early-mornings"
+                            value="Early Mornings (Sunrise - 8am)" {% if "Early Mornings (Sunrise - 8am)" in user.calendar %}
+                            checked {% endif %}></input>
+                        <label for="early-mornings"> Early Mornings (Sunrise - 8am) </label><br>
+                        <input type="checkbox" name="calendar" class="calendar" id="mornings" value="Mornings (8am - 11am)" {%
+                            if "Mornings (8am - 11am)" in user.calendar %} checked {% endif %}></input>
+                        <label for="mornings"> Mornings (8am - 11am) </label><br>
+                        <input type="checkbox" name="calendar" class="calendar" id="afternoons" value="Afternoons (11am - 2pm)"
+                            {% if "Afternoons (11am - 2pm)" in user.calendar %} checked {% endif %}></input>
+                        <label for="afternoons"> Afternoons (11am - 2pm) </label><br>
+                        <input type="checkbox" name="calendar" class="calendar" id="late-afternoon"
+                            value="Late Afternoons (2pm - 5pm)" {% if "Late Afternoons (2pm - 5pm)" in user.calendar %} checked
+                            {% endif %}></input>
+                        <label for="late-afternoons"> Late Afternoons (2pm - 5pm) </label><br>
+                        <input type="checkbox" name="calendar" class="calendar" id="evenings" value="Evenings (5pm - Sunset)" {%
+                            if "Evenings (5pm - Sunset)" in user.calendar %} checked {% endif %}></input>
+                        <label for="evenings"> Evenings (5pm - Sunset) </label><br>
+                    </div><br>
+                    <label for="skill-level">Skill Level:</label>
+                    <select name="skill-level" id="skill-level">
+                        <option value="{{user.skill_level}}" selected disabled hidden>{{user.skill_level}}</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </select><br><br>
+                    <div id="age-range">
+                        <text> Preferred Age Range:</text><br>
+                        <input type="checkbox" class="age-range" name="age-range" value="18-25" id="18-25" {% if "18-25" in
+                            user.age_range %} checked {% endif %}></input>
+                        <label for="18-25"> 18-25 </label><br>
+                        <input type="checkbox" class="age-range" name="age-range" value="26-30" id="26-30" {% if "26-30" in
+                            user.age_range %} checked {% endif %}></input>
+                        <label for="26-30"> 26-30</label><br>
+                        <input type="checkbox" class="age-range" name="age-range" value="31-35" id="31-35" {% if "31-35" in
+                            user.age_range %} checked {% endif %}></input>
+                        <label for="31-35"> 31-35 </label><br>
+                        <input type="checkbox" class="age-range" name="age-range" value="36-40" id="36-40" {% if "36-40" in
+                            user.age_range %} checked {% endif %}></input>
+                        <label for="36-40"> 36-40 </label><br>
+                        <input type="checkbox" class="age-range" name="age-range" value="41-50" id="41-50" {% if "41-50" in
+                            user.age_range %} checked {% endif %}></input>
+                        <label for="41-50"> 41-50 </label><br>
+                        <input type="checkbox" class="age-range" name="age-range" value="51+" id="51+" {% if "51+" in
+                            user.age_range %} checked {% endif %}></input>
+                        <label for="51+"> 51+ </label><br><br>
+                    </div>
+                    <label for="frequented-courses">Frequented Courses:</label><br>
+                    <textarea name="frequented-courses" id="frequented-courses"
+                        maxlength="200">{{user.frequented_courses}}</textarea> <br>
+                    <label for="kids-ok">Kids okay?:</label>
+                    <select name="kids-ok" id="kids-ok">
+                        <option value="{{user.kids_okay}}" selected disabled hidden>{{user.kids_okay}}</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No Preference">No Preference</option>
+                    </select><br>
+                    <label for="dogs-ok">Dogs okay?:</label>
+                    <select name="dogs-ok" id="dogs-ok">
+                        <option value="{{user.dogs_okay}}" selected disabled hidden>{{user.dogs_okay}}</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No Preference">No Preference</option>
+                    </select><br>
+                    <label for="friendly-stakes">Friendly or Stakes games?</label>
+                    <select name="friendly-stakes" id="friendly-stakes">
+                        <option value="{{user.friendly_or_stakes_game}}" selected disabled hidden>
+                            {{user.friendly_or_stakes_game}}</option>
+                        <option value="Friendly game">Friendly game</option>
+                        <option value="Stakes game">Stakes game</option>
+                        <option value="Friendly and Stakes">Friendly and Stakes</option>
+                    </select><br>
+                    <label for="game-type">Game preference:</label>
+                    <select name="game-type" id="game-type">
+                        <option value="{{user.type_of_game}}" selected disabled hidden>{{user.type_of_game}}</option>
+                        <option value="Front 9">Front 9</option>
+                        <option value="Back 9">Back 9</option>
+                        <option value="Full Course">Full Course</option>
+                        <option value="No Preference">No Preference</option>
+                    </select><br>
+                    <label for="alcohol-ok">Alcohol okay?</label>
+                    <select name="alcohol-ok" id="alcohol-ok">
+                        <option value="{{user.alcohol_okay}}" selected disabled hidden>{{user.alcohol_okay}}</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No Preference">No Preference</option>
+                    </select><br>
+                    <label for="tobacco-ok">Tobacco okay?</label>
+                    <select name="tobacco-ok" id="tobacco-ok">
+                        <option value="{{user.tobacco_okay}}" selected disabled hidden>{{user.tobacco_okay}}</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No Preference">No Preference</option>
+                    </select><br>
+                    <label for="smoke-420-ok">420/Marijuana Friendly?</label>
+                    <select name="smoke-420-ok" id="smoke-420-ok">
+                        <option value="{{user.smoke_420_okay}}" selected disabled hidden>{{user.smoke_420_okay}}</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No Preference">No Preference</option>
+                    </select><br><br>
+                    <button class="app" type="submit"> Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script src="/static/js/edit-profile.js"></script>
+
+    {% endblock %}

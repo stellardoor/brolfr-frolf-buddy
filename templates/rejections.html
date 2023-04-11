@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Denied Buds {% endblock %}
+
+{% block body %}
+<h1 class="middle-headline-chat">Rejected Buds</h1>
+    <div id="rejections" >
+
+    </div>
+    
+    <script type="text/jsx" src="/static/jsx/rejecteds.jsx"></script>
+    <script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#rejections')
+        )
+    </script>
+
+{% endblock %}

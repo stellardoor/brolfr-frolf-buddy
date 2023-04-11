@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %} {{user.fname}} {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center p-3">
+        <div class="col-12">
+<h1 > {{user.fname}}'s Profile Specifics</h1>
+</div>
+</div>
+</div>
+
+
+</div><br>
+<div class="container">
+    <div class="row justify-content-center p-3">
+        <div class="col-12 col-lg-4">
+            <div class="container-photo">
+                <img class = "profile" src="{{user.photo_link}}" >
+                <div id="photo-uploader"></div>
+        </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="container-location">
+                <div id="current-location">Current Location: {{user.location}}, {{user.state}}.</div>
+                <div id="cities"></div>
+            </div>
+        </div>
+      <div class="col-12 col-lg-4">
+            <div class="container-brolfr">
+            <p> <b>About Me:</b> {{user.intro_text}}</p>
+
+                    <b>Member since:</b> {{user.member_since}}<br>
+                    <b>Looking to throw with:</b> {{user.gender_preference}}<br>
+                    <b>Availability:</b> 
+                    <ul>
+                    {% for item in user.calendar %} 
+                        <li>{{item}}</li>
+                    {% endfor %}
+                </ul> <br>
+                    <b>Skill Level:</b> {{user.skill_level}} <br>
+                    <b>Age Range:</b> 
+                    <ul>
+                    {% for item in user.age_range %} 
+                        <li>{{item}} </li>
+                    {% endfor %}
+                    </ul>
+                    <b>Frequented Courses:</b> {{user.frequented_courses}}<br>
+                    <b>Kids:</b> {{user.kids_okay}}<br>
+                    <b>Dogs:</b> {{user.dogs_okay}}<br>
+                    <b>Friendly/Stakes:</b> {{user.friendly_or_stakes_game}}<br>
+                    <b>Game preference:</b> {{user.type_of_game}}<br>
+                    <b>Alcohol:</b> {{user.alcohol_okay}}<br>
+                    <b>Tobacco:</b> {{user.tobacco_okay}}<br>
+                    <b>420 Friendly:</b> {{user.smoke_420_okay}}<br><br>
+                    <input style="position: center;" class="app" type="button" onclick="window.location.href='/edit-profile';" value="Edit Profile" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <script type="text/jsx" src="/static/jsx/upload-photo.jsx"></script>
+<script type="text/jsx">
+        ReactDOM.render(
+            <UploadProfilePicture />,
+            document.querySelector('#photo-uploader')
+        )
+    </script>
+
+<script type="text/jsx" src="/static/jsx/searching.jsx"></script>
+    <script type="text/jsx">
+            ReactDOM.render(
+                <LoadCities />,
+                document.querySelector('#cities')
+            )
+    </script>
+
+{% endblock %}

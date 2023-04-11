@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %} welcome frolf buds {% endblock %}
+
+{% block body %}
+
+{% if 'user_id' in session %}
+      <div class="middle-headline-top"> 
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size:x-large;
+        color:rgb(1, 11, 6);
+        font-weight: 500;">Welcome back {{session['name']}}! <button class="app" type="button" style="font-size:large" onclick ="window.location.href='/home';">
+        Enter Site 🤠
+      </button>
+      </h1>
+  {% else %}
+    <div class="middle-headline-top"> 
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size:x-large;
+      color:rgb(1, 11, 6);
+      font-weight: 500;">welcome bro, frolf much? <button class="app" type="button" style="font-size:large" onclick ="window.location.href='/new-account';">
+      Click here to join!
+    </button>
+    </h1>
+
+  {% endif %}
+
+    </div>
+<body>
+  <div class="col-12 col-md-8 col-lg-6" style="position: fixed;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);">
+  <div class="brolf-carousel">
+  <div id="brolfr-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img src="/static/images/brolf1.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf2.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf3.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf4.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf5.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf6.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf7.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf8.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf9.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="/static/images/brolf10.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" style= "width: 7%; height: 100%" data-bs-target="#brolfr-carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" style= "width: 7%; height: 100%" data-bs-target="#brolfr-carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+</div>
+<br>
+      
+      <!-- Modal -->
+
+
+
+{% endblock %}

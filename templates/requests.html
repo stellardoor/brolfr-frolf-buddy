@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Requests {% endblock %}
+
+{% block body %}
+<h1 class="middle-headline-chat">Requests</h1>
+    <div id="requests" >
+
+    </div>
+    
+    <script type="text/jsx" src="/static/jsx/accept-reject.jsx"></script>
+    <script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#requests')
+        )
+    </script>
+
+{% endblock %}

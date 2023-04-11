@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %} Buddies {% endblock %}
+
+{% block body %}
+<h1 class="middle-headline-chat">Buddies</h1>
+    <div id="buddies" >
+
+    </div>
+    
+    <script type="text/jsx" src="/static/jsx/buddies.jsx"></script>
+    <script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#buddies')
+        )
+    </script>
+
+{% endblock %}

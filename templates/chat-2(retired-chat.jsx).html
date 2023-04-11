@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Chat with {{user_2name}} {% endblock %}
+
+{% block body %}
+<br>
+<button class="app" onclick='window.location.href="/chats";'> See all chats</button>
+<br>
+<div class="middle-headline-chat">
+<h1> Chatting with {{user_2name}}</h1>
+</div>
+<input type = "hidden" id="buddy-id" value="{{buddy_id}}"></input>
+<input type = "hidden" id="user-1" value="{{user_1}}"></input>
+<input type = "hidden" id="user-2" value="{{user_2}}"></input>
+<br>
+<div id="chats" class="middle-chat">
+
+</div>
+
+<script type="text/jsx" src="/static/jsx/chat(retired-chat-2.html).jsx"></script>
+<script type="text/jsx">
+        ReactDOM.render(
+            <App />,
+            document.querySelector('#chats')
+        )
+    </script>
+{% endblock %}
