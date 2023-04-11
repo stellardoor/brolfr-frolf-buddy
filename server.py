@@ -84,26 +84,33 @@ def show_new_account_form():
         return render_template('new-account.html', today=today)
 
 #CHECK******************
+# @app.route("/create-new-account", methods=["POST"])
+# def create_new_account():
+#     fname = request.json.get("fname").strip()
+#     pronouns = request.json.get("pronouns")
+#     gender = request.json.get("gender")
+#     birthday = request.json.get("birthday")
+#     email = request.json.get("email").lower().strip()
+#     # process and hash password: 
+#     password = request.json.get("password")
+#     # if len(password) < 8:
+#     #     return "ERROR: Password must be at least 8 characters, with 1 uppercase letter"
+#     hashed_pass = argon2.hash(password)
+#     date_today  = datetime.today()
+#     member_since = date_today.strftime("%b %d, %Y")
+#     check_email = crud.get_user_by_email(email)
+#     if not check_email:
+#         crud.create_user(email, hashed_pass, fname, pronouns, gender, birthday, member_since)
+#         return f"Hey there {fname.title()}, thanks for joining! Please log in!"
+#     else:
+#         return f"Error. User email {email} already exists."
+
+# TEMP CREATE ACCOUNT WHILE SITE IS DEPLOYED------------
+
 @app.route("/create-new-account", methods=["POST"])
 def create_new_account():
-    fname = request.json.get("fname").strip()
-    pronouns = request.json.get("pronouns")
-    gender = request.json.get("gender")
-    birthday = request.json.get("birthday")
-    email = request.json.get("email").lower().strip()
-    # process and hash password: 
-    password = request.json.get("password")
-    # if len(password) < 8:
-    #     return "ERROR: Password must be at least 8 characters, with 1 uppercase letter"
-    hashed_pass = argon2.hash(password)
-    date_today  = datetime.today()
-    member_since = date_today.strftime("%b %d, %Y")
-    check_email = crud.get_user_by_email(email)
-    if not check_email:
-        crud.create_user(email, hashed_pass, fname, pronouns, gender, birthday, member_since)
-        return f"Hey there {fname.title()}, thanks for joining! Please log in!"
-    else:
-        return f"Error. User email {email} already exists."
+
+    return f"😬😬😬 Please don't make an account while this site isn't meant to be live (yet!)"
 
 @app.route("/login-help")
 def forgot_password(): #will write later maybe
@@ -593,6 +600,8 @@ def testing_html():
 if __name__ == "__main__":
     with app.app_context():
         connect_to_db(app) 
-         #setting up server host for running app
-        # app.run(host="0.0.0.0", debug=True)
-        app.run()
+        # comment out below when live:
+        app.run(host="0.0.0.0", debug=True)
+
+        #comment out below when testing:
+        # app.run()
